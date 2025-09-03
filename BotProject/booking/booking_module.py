@@ -91,3 +91,73 @@ class Booking(webdriver.Chrome):
             else:
                 break
             
+    def seat_booking(self, adults, children, rooms):
+
+        try:
+            selection_element = WebDriverWait(self, 10).until(
+                EC.element_to_be_clickable(
+                    (By.CSS_SELECTOR, 'button[aria-label^="Number of travelers and rooms."]')
+                )
+            )
+            selection_element.click()
+        except:
+            print("Exception occurred")
+        adults_value_element = self.find_element(
+            By.ID, 'group_adults'
+        )
+        adults_value = int(adults_value_element.get_attribute('value'))
+
+        increase_adults_button = self.find_element(
+            By.CSS_SELECTOR, 'button[aria-label="Increase number of Adults"]'
+        )
+        decrease_adults_button = self.find_element(
+            By.CSS_SELECTOR, 'button[aria-label="Decrease number of Adults"]'
+        )
+
+        while adults_value != adults:
+            if adults_value < adults:
+                increase_adults_button.click()
+                adults_value += 1
+            elif adults_value > adults:
+                decrease_adults_button.click()
+                adults_value -= 1
+
+        # children_value_element = self.find_element(
+        #     By.ID, 'group_children'
+        # )
+        # children_value = int(children_value_element.get_attribute('value'))
+
+        # increase_children_button = self.find_element(
+        #     By.CSS_SELECTOR, 'button[aria-label="Increase number of Children"]'
+        # )
+        # decrease_children_button = self.find_element(
+        #     By.CSS_SELECTOR, 'button[aria-label="Decrease number of Children"]'
+        # )
+
+        # while children_value != children:
+        #     if children_value < children:
+        #         increase_children_button.click()
+        #         children_value += 1
+        #     elif children_value > children:
+        #         decrease_children_button.click()
+        #         children_value -= 1
+
+        # rooms_value_element = self.find_element(
+        #     By.ID, 'group_rooms'
+        # )
+        # rooms_value = int(rooms_value_element.get_attribute('value'))
+
+        # increase_rooms_button = self.find_element(
+        #     By.CSS_SELECTOR, 'button[aria-label="Increase number of Rooms"]'
+        # )
+        # decrease_rooms_button = self.find_element(
+        #     By.CSS_SELECTOR, 'button[aria-label="Decrease number of Rooms"]'
+        # )
+
+        # while rooms_value != rooms:
+        #     if rooms_value < rooms:
+        #         increase_rooms_button.click()
+        #         rooms_value += 1
+        #     elif rooms_value > rooms:
+        #         decrease_rooms_button.click()
+        #         rooms_value -= 1
