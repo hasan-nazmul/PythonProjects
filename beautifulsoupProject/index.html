@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Bookstore - BeautifulSoup Practice</title>
+</head>
+<body>
+    <header>
+        <h1 id="main-title">Bookworm's Paradise</h1>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#fiction">Fiction</a></li>
+                <li><a href="#non-fiction">Non-Fiction</a></li>
+                <li><a href="#science">Science</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="featured-books">
+            <h2 class="section-title">Featured Books</h2>
+            <div class="book-container">
+                <article class="book" data-category="fiction" data-price="19.99">
+                    <h3 class="book-title">The Great Adventure</h3>
+                    <p class="author">By John Smith</p>
+                    <p class="price">$19.99</p>
+                    <p class="description">An epic journey through unknown lands.</p>
+                    <div class="rating" data-stars="4.5">★★★★☆</div>
+                </article>
+
+                <article class="book" data-category="science" data-price="24.99">
+                    <h3 class="book-title">Quantum Physics for Beginners</h3>
+                    <p class="author">By Dr. Emily Chen</p>
+                    <p class="price">$24.99</p>
+                    <p class="description">Understand the mysteries of quantum mechanics.</p>
+                    <div class="rating" data-stars="4.8">★★★★★</div>
+                </article>
+
+                <article class="book" data-category="non-fiction" data-price="15.99">
+                    <h3 class="book-title">History of Ancient Civilizations</h3>
+                    <p class="author">By Prof. Robert Johnson</p>
+                    <p class="price special-price">$15.99 <span class="original-price">$29.99</span></p>
+                    <p class="description">Explore ancient cultures and their impact on modern society.</p>
+                    <div class="rating" data-stars="4.2">★★★★☆</div>
+                </article>
+            </div>
+        </section>
+
+        <section id="bestsellers">
+            <h2 class="section-title">Bestsellers</h2>
+            <table id="bestseller-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                        <th>Weeks on List</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>The Silent Ocean</td>
+                        <td>Maria Garcia</td>
+                        <td>12</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Data Science Essentials</td>
+                        <td>Dr. James Wilson</td>
+                        <td>8</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Cooking with Passion</td>
+                        <td>Chef Lisa Wong</td>
+                        <td>6</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <aside id="sidebar">
+            <div class="newsletter-signup">
+                <h3>Subscribe to our Newsletter</h3>
+                <form action="/subscribe" method="post">
+                    <input type="email" name="email" placeholder="Enter your email">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+
+            <div class="recent-posts">
+                <h3>Recent Blog Posts</h3>
+                <ul>
+                    <li><a href="/blog/top-10-books-2023">Top 10 Books of 2023</a></li>
+                    <li><a href="/blog/author-interview">Interview with Bestselling Author</a></li>
+                    <li><a href="/blog/reading-tips">How to Develop a Reading Habit</a></li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer id="contact">
+        <div class="contact-info">
+            <h3>Contact Us</h3>
+            <p>Email: <a href="mailto:info@bookstore.com">info@bookstore.com</a></p>
+            <p>Phone: (555) 123-4567</p>
+            <p>Address: 123 Book Lane, Reading City</p>
+        </div>
+
+        <div class="social-media">
+            <h3>Follow Us</h3>
+            <a href="https://twitter.com/bookstore" class="social-link">Twitter</a>
+            <a href="https://facebook.com/bookstore" class="social-link">Facebook</a>
+            <a href="https://instagram.com/bookstore" class="social-link">Instagram</a>
+        </div>
+
+        <p class="copyright">&copy; 2023 Bookworm's Paradise. All rights reserved.</p>
+    </footer>
+</body>
+</html>
