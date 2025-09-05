@@ -6,6 +6,30 @@ from selenium.webdriver.common.keys import Keys
 import booking.constants as const
 import time
 
+def get_plus_button():
+    """Robust function to find the plus button"""
+    selectors = [
+        "[data-testid*='plus']",
+        "[aria-label*='increase']",
+        "[title*='add']",
+        "button:has(svg[viewBox*='24'])",  # CSS :has() if supported
+        # Add more fallback selectors
+    ]
+
+    driver = webdriver.Chrome()  # or your driver of choice
+    driver.get(const.BASE_URL)  # Replace with your target URL
+    
+    for selector in selectors:
+        try:
+            WebDriverWait(driver, 5).until(
+                EC.element_to_be_clickable((By.CSS_SELECTOR, selector))
+            )
+            print(f"Found plus button with selector: {selector}")
+        except:
+            continue
+    
+    raise Exception("Plus button not found with any selector")
+
 class Booking(webdriver.Chrome):
     def __init__(self):
         super().__init__()
@@ -160,4 +184,4 @@ class Booking(webdriver.Chrome):
         #         rooms_value += 1
         #     elif rooms_value > rooms:
         #         decrease_rooms_button.click()
-        #         rooms_value -= 1
+        #         rooms_value -= 
