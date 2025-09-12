@@ -1,5 +1,6 @@
 import scrapy
 from bookscraper.items import BookItem
+import random
 
 
 class BookspiderSpider(scrapy.Spider):
@@ -22,6 +23,7 @@ class BookspiderSpider(scrapy.Spider):
     #         'booksdata.json': {'format': 'json', 'overwrite': True},
     #     }
     # }
+
 
     def parse(self, response):
         books = response.css("article.product_pod")
@@ -55,5 +57,9 @@ class BookspiderSpider(scrapy.Spider):
         bookItem['upc'] = upc
         bookItem['category'] = category
         bookItem['url'] = response.url
+
+        print('*'*50)
+        print(response.headers)
+        print('*'*50)
 
         yield bookItem
