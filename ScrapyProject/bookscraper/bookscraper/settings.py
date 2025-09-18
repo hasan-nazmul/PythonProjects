@@ -28,7 +28,7 @@ ADDONS = {}
 #USER_AGENT = "bookscraper (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
-ROBOTSTXT_OBEY = True
+ROBOTSTXT_OBEY = False
 
 # Concurrency and throttling settings
 #CONCURRENT_REQUESTS = 16
@@ -57,7 +57,7 @@ DOWNLOAD_DELAY = 1
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 DOWNLOADER_MIDDLEWARES = {
    # "bookscraper.middlewares.BookscraperDownloaderMiddleware": 543,
-   "bookscraper.middlewares.ScrapeOpsFakeUserAgentMiddleware": 300,
+   "bookscraper.middlewares.ScrapeOpsFakeBrowserHeaderAgentMiddleware": 300,
 }
 
 # Enable or disable extensions
