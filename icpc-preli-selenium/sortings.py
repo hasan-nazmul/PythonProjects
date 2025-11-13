@@ -1,32 +1,31 @@
 import pandas as pd
 
-# Extract data from the table
-data = pd.read_csv('standings_multiple_pages_20250930_023141.csv')
+def count_teams_by_university(input_file, output_file):
+    """
+    Read CSV file, count teams per university, sort in descending order, and save to new CSV
+    """
+    # Read the CSV file
+    df = pd.read_csv(input_file)
+    
+    # Count teams per university
+    team_counts = df['University'].value_counts().reset_index()
+    
+    # Rename columns for clarity
+    team_counts.columns = ['University', 'Number_of_Teams']
+    
+    # Sort in descending order by team count
+    team_counts = team_counts.sort_values('Number_of_Teams', ascending=False)
+    
+    # Save to new CSV file
+    team_counts.to_csv(output_file, index=False)
+    
+    print(f"Team counts saved to {output_file}")
+    print("\nTop 10 universities by team count:")
+    print(team_counts.head(10).to_string(index=False))
+    
+    return team_counts
 
-data = data[['Team Name', 'University', 'Solved']]
-
-# Group by university and calculate the required statistics
-university_stats = data.groupby('University').agg(
-    total_teams_participated=('Team Name', 'count'),
-    teams_solved_at_least_1=('Solved', lambda x: (x >= 1).sum())
-).reset_index()
-
-# Rename columns for clarity
-university_stats.columns = ['University Name', 'Total Teams Participated', 'Teams Solved At Least 1 Problem']
-
-# Sort by priority: 
-# 1. Teams Solved At Least 1 Problem (higher to lower)
-# 2. Total Teams Participated (higher to lower) 
-# 3. University Name (lexicographical order)
-university_stats = university_stats.sort_values(
-    by=['Teams Solved At Least 1 Problem', 'Total Teams Participated', 'University Name'], 
-    ascending=[False, False, True]
-)
-
-# Save to new CSV file
-university_stats.to_csv('university_participation_stats.csv', index=False)
-
-print("CSV file 'university_participation_stats.csv' has been created successfully!")
-print(f"\nTotal universities: {len(university_stats)}")
-print("\nGenerated Data:")
-print(university_stats.to_string(index=False))
+# Usage
+input_csv = 'icpc_teams_all_complete.csv'
+output_csv = 'university_team_counts.csv'
+result = count_teams_by_university(input_csv, output_csv)
